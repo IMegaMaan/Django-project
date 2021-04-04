@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Последние обновления на сайте{% endblock %}
+{% block header %}Последние обновления на сайте{% endblock %}
+
+{% load cache %}
+
+{% block content %}
+    <div class="container">
+        {% cache 20 index_page page%}
+        {% for post in page %}
+            <h3>
+                Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
+            </h3>
+            {% include "include/post_item.html" with post=post %}
+        {% endfor %}
+        {% endcache %}
+    </div>
+    {%if page.has_other_pages %}
+        {% include "include/paginator.html" %}
+    {% endif %}
+{% endblock %}
+

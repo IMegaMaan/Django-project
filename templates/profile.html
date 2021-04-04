@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="row">
+
+            {% include "include/author.html" %}
+
+            <div class="col-md-9">
+
+                {% for post in page %}
+                    {% include "include/post_item.html" with post=post %}
+                {% endfor %}
+
+
+                {%if page.has_other_pages %}
+                    {% include "include/paginator.html"%}
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

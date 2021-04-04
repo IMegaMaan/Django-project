@@ -1,0 +1,52 @@
+<!-- templates/about/tech.html -->
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load user_filters %}
+  <main role="main" class="container">
+    <div class="row">
+      <!-- Левый вспомогательный блок -->
+      <div class="col-md-3 mb-3 mt-1">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="h3">
+                  Здесь Вы найдете полезные нюансы Python.
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="h6 text-muted">
+                  Python — это высокоуровневый язык программирования общего назначения, который используется в том
+                  числе и для разработки веб-приложений. Язык ориентирован на повышение производительности разработчика и читаемости кода.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <div class="card-text">
+            <div class="section" id="id1"><h2>Что такое списки?</h2><p>Списки в Python - упорядоченные изменяемые коллекции объектов произвольных типов (почти как массив, но типы могут отличаться).</p><p>Чтобы использовать списки, их нужно создать. Создать список можно несколькими способами. Например, можно обработать любой итерируемый объект (например, <a href="https://pythonworld.ru/tipy-dannyx-v-python/stroki-literaly-strok.html" target="_blank">строку</a>) встроенной функцией <b>list</b>:</p><div class="highlight-python3" style="position: relative;"><div class="highlight"><span class="copybutton" title="Убрать приглашения и вывод программы">&gt;&gt;&gt;</span><pre class="code pycon literal-block"><span class="nb"></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="s1">'список'</span><span class="p">)</span>
+              <span class="go">['с', 'п', 'и', 'с', 'о', 'к']</span></pre></div></div><p>Список можно создать и при помощи литерала:</p><div class="highlight-python3" style="position: relative;"><div class="highlight"><span class="copybutton" title="Убрать приглашения и вывод программы">&gt;&gt;&gt;</span><pre class="code pycon literal-block"><span class="n"></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Пустой список</span>
+              <span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'s'</span><span class="p">,</span> <span class="s1">'p'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'isok'</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
+              <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+              <span class="go">[]
+              </span><span class="n"></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span>
+              <span class="go">['s', 'p', ['isok'], 2]</span></pre></div></div><p>Как видно из примера, список может содержать любое количество любых объектов (в том числе и вложенные списки), или не содержать ничего.</p><p>И еще один способ создать список - это <b>генераторы списков</b>. Генератор списков - способ построить новый список, применяя выражение к каждому элементу последовательности. Генераторы списков очень похожи на цикл <a href="https://pythonworld.ru/osnovy/cikly-for-i-while-operatory-break-i-continue-volshebnoe-slovo-else.html" target="_blank">for</a>.</p><div class="highlight-python3" style="position: relative;"><div class="highlight"><span class="copybutton" title="Убрать приглашения и вывод программы">&gt;&gt;&gt;</span><pre class="code pycon literal-block"><span class="n"></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="o">*</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">'list'</span><span class="p">]</span>
+              <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+              <span class="go">['lll', 'iii', 'sss', 'ttt']</span></pre></div></div><p>Возможна и более сложная конструкция генератора списков:</p><div class="highlight-python3" style="position: relative;"><div class="highlight"><span class="copybutton" title="Убрать приглашения и вывод программы">&gt;&gt;&gt;</span><pre class="code pycon literal-block"><span class="n"></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="o">*</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">'list'</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">'i'</span><span class="p">]</span>
+              <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+              <span class="go">['lll', 'sss', 'ttt']
+              </span><span class="n"></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="n">d</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">'list'</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">'i'</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="s1">'spam'</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="s1">'a'</span><span class="p">]</span>
+              <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+              <span class="go">['ls', 'lp', 'lm', 'ss', 'sp', 'sm', 'ts', 'tp', 'tm']</span></pre></div></div><p>Но в сложных случаях лучше пользоваться обычным циклом for для генерации списков.</p></div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

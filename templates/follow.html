@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Посты авторов, на которых я подписан{% endblock %}
+{% block header %}Посты авторов, на которых я подписан{% endblock %}
+{% block content %}
+
+    <div class="container">
+        {% for post in page %}
+            <h3>
+                Автор: {{ post.author.get_full_name }}, Дата публикации: {{ post.pub_date|date:"d M Y" }}
+            </h3>
+            {% include "include/post_item.html" with post=post %}
+        {% endfor %}
+    </div>
+    {%if page.has_other_pages %}
+        {% include "include/paginator.html" with paginator=paginator page=page%}
+    {% endif %}
+{% endblock %}
+
+
